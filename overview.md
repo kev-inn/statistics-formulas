@@ -20,8 +20,23 @@ If all $X_i$ have the same $\mathrm{E}(X_i)=\mu$, then $\bar{X}$ is a unbiased e
 ## Quantile
 $Q_p = X_{\lfloor{np}\rfloor+1} \quad 0 < p < 1$
 Median: $\mathrm{med} = Q_{0.5}$
-Quartiles: $Q_{0.25}, Q_{0.5}, Q_{0.75}$
+### Quartiles:
+$Q_{0.25}, Q_{0.5}, Q_{0.75}$
+R code snippet (R `quantile` function calculates quantiles differently)
+```R
+myQuantile <- function(x) {
+    l = length(x)
+    xs = sort(x)
+    q = c()
+    q[1] = xs[floor(l*0.25)+1]
+    q[2] = xs[floor(l*0.5)+1]
+    q[3] = xs[floor(l*0.75)+1]
+    return(q)
+}
+```
 Percentiles: $Q_{0.1}, Q_{0.2}, \ldots Q_{0.9}$
+
+
 
 ## $\alpha$-trimmed mean
 $\bar{X}_\alpha$ for $\alpha \in (0,0.5)$
